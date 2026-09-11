@@ -74,12 +74,17 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Git commit requirement)
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology including your 3rd party API and use of WebSocket
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] I completed the prerequisites for this deliverable (Git commit requirement) - I made multiple Git commits while completing the specification.
+
+- [x] Proper use of Markdown - I used headings, lists, links, images, and a Mermaid diagram to organize and present the README.
+
+- [x] A concise and compelling elevator pitch - I created an elevator pitch explaining how Spend Horizon helps users track their budget and plan for future purchases.
+
+- [x] Description of key features - I described features including expense tracking, savings goals, savings suggestions, and graphs showing financial progress.
+
+- [x] Description of how you will use each technology including your 3rd party API and use of WebSocket - I described how HTML, CSS, React, backend services, a database, and WebSocket will be used. I also included the Frankfurter API for currency exchange rates.
+
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. - I created and embedded sketches for the dashboard, budget page, and savings goals page.
 
 ## 🚀 AWS deliverable
 
