@@ -29,9 +29,12 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Track monthly income and expenses.
+- Categorize expenses such as rent, food, bills, and entertainment.
+- Create savings goals for future purchases.
+- Calculate how long it will take to reach a savings goal based on the user's current budget.
+- Suggest areas where the user could spend less to reach their goals faster.
+- View graphs that show spending and saving progress over time.
 
 ### Technologies
 
