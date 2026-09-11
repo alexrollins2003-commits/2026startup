@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-This is similar to other budgeting apps. The user enters in their monthly earnings along with their monthly costs. This includes stuff like rent, food, entertainment, bills, etc. This will help you see how much you are earning and losing each month. There will also be a feature that will help you to see if you can afford specific things. For example if you want to buy a car you will enter around how much it costs and the app will calculate how long you will have to save to get that amount. Along with ideas of where you can save more. It will also have graphs and charts to show your history of saving and how well you compare to past months.
+Spend Ahead is a budgeting app that helps users track their income, expenses, and savings. Users can see where their money is going, set goals for future purchases, and find out how long it will take to afford them. The app will also provide suggestions for saving money and use graphs to show spending and saving progress over time.
 
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
