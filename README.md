@@ -30,9 +30,13 @@ Spend Ahead is a budgeting app that helps you plan for what’s next, not just t
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor User
+    participant SpendAhead
+
+    User->>SpendAhead: Enter income and expenses
+    SpendAhead->>User: Display monthly budget
+    User->>SpendAhead: Create savings goal
+    SpendAhead->>User: Estimate time to reach goal
 ```
 
 ### Key features
