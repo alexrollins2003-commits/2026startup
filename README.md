@@ -40,12 +40,20 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Provide the structure for pages such as the dashboard, budget, savings goals, and login page.
+
+- **CSS** - Style the website, graphs, buttons, savings progress bars, and page layouts. CSS will also make the website responsive to different screen sizes.
+
+- **React** - Create reusable components for expenses, savings goals, graphs, and other parts of the website. React will also handle navigation between pages and update displayed information when the user changes their budget.
+
+- **Service** - Provide backend endpoints for creating accounts, logging in,
+  managing expenses, and managing savings goals. The service will also use the
+  [Frankfurter API](https://frankfurter.dev/) to get current currency exchange
+  rates for savings goals involving other currencies.
+
+- **DB/Login** - Store user account information along with each user's income, expenses, savings goals, and financial history.
+
+- **WebSocket** - Send real-time notifications to users, such as notifying them when they reach a savings milestone.
 
 ## 🚀 Specification Deliverable
 
