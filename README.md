@@ -1,8 +1,8 @@
-# Budgeting App
+# Spend Horizon
 
 [My Notes](notes.md)
 
-Spend Ahead is a budgeting app that helps users track their income, expenses, and savings. Users can see where their money is going, set goals for future purchases, and find out how long it will take to afford them. The app will also provide suggestions for saving money and use graphs to show spending and saving progress over time.
+Spend Horizon is a budgeting app that helps users track their income, expenses, and savings. Users can see where their money is going, set goals for future purchases, and find out how long it will take to afford them. The app will also provide suggestions for saving money and use graphs to show spending and saving progress over time.
 
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
@@ -12,7 +12,7 @@ Spend Ahead is a budgeting app that helps users track their income, expenses, an
 
 ### Elevator pitch
 
-Spend Ahead is a budgeting app that helps you plan for what’s next, not just track what you’ve already spent. Enter your income and monthly expenses to see where your money is going, track your progress over time, and plan for future purchases. Whether you’re saving for a car, a trip, or something else, Spend Ahead estimates how long it will take to reach your goal and helps you find ways to get there faster.
+Spend Horizon is a budgeting app that helps you plan for what’s next, not just track what you’ve already spent. Enter your income and monthly expenses to see where your money is going, track your progress over time, and plan for future purchases. Whether you’re saving for a car, a trip, or something else, Spend Horizon estimates how long it will take to reach your goal and helps you find ways to get there faster.
 
 ### Design
 
@@ -31,12 +31,12 @@ Spend Ahead is a budgeting app that helps you plan for what’s next, not just t
 ```mermaid
 sequenceDiagram
     actor User
-    participant SpendAhead
+    participant SpendHorizon
 
-    User->>SpendAhead: Enter income and expenses
-    SpendAhead->>User: Display monthly budget
-    User->>SpendAhead: Create savings goal
-    SpendAhead->>User: Estimate time to reach goal
+    User->>SpendHorizon: Enter income and expenses
+    SpendHorizon->>User: Display monthly budget
+    User->>SpendHorizon: Create savings goal
+    SpendHorizon->>User: Estimate time to reach goal
 ```
 
 ### Key features
