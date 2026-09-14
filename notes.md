@@ -17,7 +17,17 @@ Interesting things I have learned about AWS
 
 ## HTML
 
-Interesting things I have learned about HTML
+<!-- <a href="https://example.com">Visit Example</a>
+
+<a href="about.html">About</a>
+
+<img src="https://example.com/image.jpg" alt="Example image" width =="300"> 
+
+<table> = entire table
+<tr>    = table row
+<th>    = table heading
+<td>    = table data -->
+
 
 ## React
 
