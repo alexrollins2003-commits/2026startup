@@ -90,24 +90,24 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Rented EC2 server** - I did not complete this part of the deliverable.
-- [ ] **Leased domain name** - I did not complete this part of the deliverable.
-- [ ] **Server accessible** from my domain: [https://yourdomainnamehere.click](https://yourdomainnamehere.click) - I did not complete this part of the deliverable.
+- [x] **Rented EC2 server** - I rented and configured an EC2 server for the startup application.
+- [x] **Leased domain name** - I leased a domain name for the startup application.
+- [x] **Server accessible** from my domain: [https://spendhorizon.bid](https://spendhorizon.bid) - The startup application is available from the production domain.
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits) - GitHub commits are complete, but Simon deployment and the final GitHub link still need to be confirmed.
+- [x] **HTML pages** - Created `index.html`, `budget.html`, `goals.html`, and `about.html`.
+- [x] **Proper HTML element usage** - Used semantic elements including `header`, `nav`, `main`, `section`, `form`, `table`, `figure`, and `footer`.
+- [x] **Links** - Added navigation links between all four application pages.
+- [x] **Text** - Added descriptions, financial summaries, budget content, savings goals, and About page content.
+- [x] **3rd party API placeholder** - Added a Frankfurter currency conversion placeholder and a financial tip service placeholder.
+- [x] **Images** - Added the horizon image to each application page.
+- [x] **Login placeholder** - Added a name and password login form to `index.html`.
+- [x] **DB data placeholder** - Added placeholder data for income, expenses, savings goals, totals, and monthly savings history.
+- [x] **WebSocket placeholder** - Added a live updates section with a future WebSocket connection placeholder.
 
 ## 🚀 CSS deliverable
 
