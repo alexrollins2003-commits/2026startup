@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">A calm horizon</title>
+  <desc id="desc">A sun setting behind distant hills.</desc>
+  <rect width="800" height="450" fill="#f6c98b" />
+  <rect y="220" width="800" height="230" fill="#d88968" />
+  <circle cx="590" cy="205" r="72" fill="#fff0b0" />
+  <path d="M0 315 L155 190 L285 300 L430 165 L590 315 L700 235 L800 315 V450 H0 Z" fill="#5c5960" />
+  <path d="M0 350 L180 255 L320 350 L490 245 L650 350 L760 285 L800 315 V450 H0 Z" fill="#293d45" />
+  <path d="M0 405 H800 V450 H0 Z" fill="#172a30" />
+</svg>

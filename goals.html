@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savings Goals | Spend Horizon</title>
+  </head>
+  <body>
+    <header>
+      <h1>Spend Horizon</h1>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="budget.html">Budget</a></li>
+          <li><a href="goals.html">Savings goals</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Make future plans feel closer.</h2>
+      <p>Welcome back, Maya.</p>
+      <!-- Login placeholder: replace this form with the login service. -->
+      <form action="#" method="post">
+        <label for="user-name">Name</label>
+        <input id="user-name" name="user-name" type="text" placeholder="Enter your name" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter your password" />
+        <button type="submit">Log in</button>
+      </form>
+
+      <section>
+        <h2>Active savings goals</h2>
+        <ul>
+          <li>Weekend trip: $720 saved of $1,200</li>
+          <li>Emergency fund: $3,100 saved of $6,000</li>
+          <li>New laptop: $460 saved of $1,800</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Plan a new goal</h2>
+        <form action="#" method="post">
+          <label for="goal-name">Goal name</label>
+          <input id="goal-name" name="goal-name" type="text" placeholder="Summer trip" />
+          <label for="goal-amount">Target amount</label>
+          <input id="goal-amount" name="goal-amount" type="number" placeholder="1200" />
+          <button type="submit">Add goal</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Currency conversion</h2>
+        <p>Third-party API placeholder: Frankfurter will provide current exchange rates.</p>
+        <p>Example: 1,200 USD is approximately 1,080 EUR.</p>
+      </section>
+
+      <section>
+        <h2>Application image</h2>
+        <img src="horizon.svg" alt="A sunset over a distant horizon" width="400" />
+        <!-- Database data placeholder: savings goals above represent records stored for the logged-in user. -->
+        <p>Database preview: three savings goal records are currently displayed.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Spend Horizon &copy; 2026</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget | Spend Horizon</title>
+  </head>
+  <body>
+    <header>
+      <h1>Spend Horizon</h1>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="budget.html">Budget</a></li>
+          <li><a href="goals.html">Savings goals</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Build a budget that breathes.</h2>
+      <p>Welcome back, Maya.</p>
+      <!-- Login placeholder: replace this form with the login service. -->
+      <form action="#" method="post">
+        <label for="user-name">Name</label>
+        <input id="user-name" name="user-name" type="text" placeholder="Enter your name" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter your password" />
+        <button type="submit">Log in</button>
+      </form>
+
+      <section>
+        <h2>Monthly income</h2>
+        <img src="horizon.svg" alt="A sunset over a distant horizon" width="400" />
+        <form action="#" method="post">
+          <label for="paycheck">Primary paycheck</label>
+          <input id="paycheck" name="paycheck" type="number" value="3600" />
+          <label for="other-income">Other income</label>
+          <input id="other-income" name="other-income" type="number" value="320" />
+          <button type="submit">Save income</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Planned expenses</h2>
+        <form action="#" method="post">
+          <label for="expense-name">Expense name</label>
+          <input id="expense-name" name="expense-name" type="text" placeholder="Rent" />
+          <label for="expense-amount">Expense amount</label>
+          <input id="expense-amount" name="expense-amount" type="number" placeholder="1100" />
+          <button type="submit">Add expense</button>
+        </form>
+        <table>
+          <thead><tr><th scope="col">Expense</th><th scope="col">Category</th><th scope="col">Due</th><th scope="col">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Apartment rent</td><td>Housing</td><td>1st</td><td>$1,100</td></tr>
+            <tr><td>Electric bill</td><td>Bills</td><td>12th</td><td>$86</td></tr>
+            <tr><td>Grocery plan</td><td>Food</td><td>Weekly</td><td>$420</td></tr>
+            <tr><td>Transit pass</td><td>Transportation</td><td>1st</td><td>$120</td></tr>
+          </tbody>
+        </table>
+        <!-- Database data placeholder: saved expense rows will be loaded from the database. -->
+        <p>Database preview: four saved expense records are displayed above.</p>
+      </section>
+
+      <section>
+        <h2>Smart spending suggestion</h2>
+        <p>A future service call will review category totals and suggest a way to save.</p>
+        <p>Example response: cutting flexible dining by $35 would move your goal forward by 5 days.</p>
+        <p>Third-party service placeholder: <code>fetch('/api/suggestions?month=2026-09')</code></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Spend Horizon &copy; 2026</p>
+    </footer>
+  </body>
+</html>

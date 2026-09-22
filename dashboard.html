@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Spend Horizon</title>
+  </head>
+  <body>
+    <header>
+      <h1>Spend Horizon</h1>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="budget.html">Budget</a></li>
+          <li><a href="goals.html">Savings goals</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Your money, in view.</h2>
+      <p>Welcome back, Maya.</p>
+      <!-- Login placeholder: replace this form with the login service. -->
+      <form action="#" method="post">
+        <label for="user-name">Name</label>
+        <input id="user-name" name="user-name" type="text" placeholder="Enter your name" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter your password" />
+        <button type="submit">Log in</button>
+      </form>
+
+      <section>
+        <h2>Monthly summary</h2>
+        <img src="horizon.svg" alt="A sunset over a distant horizon" width="400" />
+        <ul>
+          <li>Available this month: $1,240</li>
+          <li>Spent so far: $1,860</li>
+          <li>Savings progress: $4,280</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Spending by category</h2>
+        <table>
+            <thead><tr><th scope="col">Category</th><th scope="col">This month</th></tr></thead>
+            <tbody>
+              <tr><td>Housing</td><td>$1,100</td></tr>
+              <tr><td>Food</td><td>$420</td></tr>
+              <tr><td>Transportation</td><td>$210</td></tr>
+              <tr><td>Fun and extras</td><td>$130</td></tr>
+            </tbody>
+        </table>
+        <!-- Database data placeholder: expense records will be loaded from the database. -->
+        <p>Database preview: four expense records are currently displayed.</p>
+      </section>
+
+      <section>
+        <h2>Live updates</h2>
+        <ul>
+          <li>WebSocket placeholder: Maya reached 60% of the weekend trip goal.</li>
+        </ul>
+        <p>Future WebSocket connection: <code>new WebSocket('/api/updates')</code></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Spend Horizon &copy; 2026</p>
+    </footer>
+  </body>
+</html>
