@@ -40,7 +40,14 @@
           <label for="expense-name">Expense name</label>
           <input id="expense-name" name="expense-name" type="text" placeholder="Rent" />
           <label for="expense-category">Expense category</label>
-          <input id="expense-category" name="expense-category" type="text" placeholder="Housing" />
+          <input id="expense-category" name="expense-category" type="text" list="category-options" placeholder="Enter Category" />
+          <datalist id="category-options">
+            <option value="Housing"></option>
+            <option value="Food"></option>
+            <option value="Bills"></option>
+            <option value="Transportation"></option>
+            <option value="Entertainment"></option>
+          </datalist>
           <label for="expense-amount">Expense amount</label>
           <input id="expense-amount" name="expense-amount" type="number" placeholder="1100" />
           <button type="submit">Add expense</button>
