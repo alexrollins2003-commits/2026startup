@@ -26,7 +26,7 @@
       <h2>Your money, in view.</h2>
       <p>Welcome back, Example User.</p>
       <!-- Login placeholder: replace this form with the login service. -->
-      <form action="#" method="post">
+      <form class="login-card" action="#" method="post">
         <label for="user-name">Name</label>
         <input id="user-name" name="user-name" type="text" placeholder="Enter your name" />
         <label for="password">Password</label>
@@ -37,12 +37,24 @@
 
       <section>
         <h2>Monthly summary</h2>
-        <ul>
-          <li>Monthly income: $3,920</li>
-          <li>Available this month: $1,240</li>
-          <li>Spent so far: $1,860</li>
-          <li>Savings progress: $4,280</li>
-        </ul>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <span>Monthly income</span>
+            <strong>$3,920</strong>
+          </div>
+          <div class="summary-item">
+            <span>Available this month</span>
+            <strong>$1,240</strong>
+          </div>
+          <div class="summary-item">
+            <span>Spent so far</span>
+            <strong>$1,860</strong>
+          </div>
+          <div class="summary-item">
+            <span>Savings progress</span>
+            <strong>$4,280</strong>
+          </div>
+        </div>
       </section>
 
       <section>

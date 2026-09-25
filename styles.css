@@ -174,11 +174,14 @@ button {
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
 button:hover,
 button:focus {
-  opacity: 0.98;
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  opacity: 1;
 }
 
 ul {
