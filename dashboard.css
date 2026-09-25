@@ -11,12 +11,69 @@ body.dashboard-page .page-shell section:first-of-type {
   background: linear-gradient(180deg, #f9fdff, #f0f9ff);
 }
 
-body.dashboard-page .page-shell form {
-  max-width: 540px;
+body.dashboard-page .page-shell .auth-trigger {
+  justify-self: start;
 }
 
-body.dashboard-page .page-shell .login-card {
-  background: linear-gradient(180deg, #f5fbff, #eef7ff);
+body.dashboard-page .auth-window {
+  position: fixed;
+  inset: 0;
+  width: min(380px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  margin: auto;
+  padding: 1.5rem;
+  overflow-y: auto;
+  border: 1px solid var(--slate-200);
+  border-radius: 16px;
+  background: var(--white);
+  color: var(--text);
+  box-shadow: 0 24px 70px rgba(23, 42, 48, 0.28);
+}
+
+body.dashboard-page .auth-window::backdrop {
+  background: rgba(23, 42, 48, 0.42);
+}
+
+body.dashboard-page .auth-window-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+body.dashboard-page .auth-window-heading h2 {
+  margin: 0;
+  color: var(--sea-700);
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.4rem;
+}
+
+body.dashboard-page .auth-window .auth-close {
+  min-width: 0;
+  padding: 0.45rem 0.7rem;
+  background: var(--slate-100);
+  color: var(--sea-700);
+}
+
+body.dashboard-page .auth-window form {
+  max-width: none;
+}
+
+body.dashboard-page .auth-window .create-account {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--slate-200);
+}
+
+body.dashboard-page .auth-window .create-account summary {
+  color: var(--sea-700);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+body.dashboard-page .auth-window .create-account[open] summary {
+  margin-bottom: 0.9rem;
 }
 
 body.dashboard-page .page-shell .summary-grid {

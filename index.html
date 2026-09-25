@@ -25,15 +25,32 @@
     <main class="page-shell">
       <h2>Your money, in view.</h2>
       <p>Welcome back.</p>
-      <!-- Login placeholder: replace this form with the login service. -->
-      <form class="login-card" action="#" method="post">
-        <label for="user-name">Name</label>
-        <input id="user-name" name="user-name" type="text" placeholder="Enter your name" />
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" placeholder="Enter your password" />
-        <button type="submit">Log in</button>
-        <a href="index.html">Log out</a>
-      </form>
+      <button class="auth-trigger" type="button" popovertarget="auth-window">Sign in</button>
+      <div class="auth-window" id="auth-window" popover>
+        <div class="auth-window-heading">
+          <h2>Sign in</h2>
+          <button class="auth-close" type="button" popovertarget="auth-window" popovertargetaction="hide">Close</button>
+        </div>
+        <form class="login-card" action="#" method="post">
+          <label for="user-name">Name</label>
+          <input id="user-name" name="user-name" type="text" placeholder="Enter your name" autocomplete="name" required />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
+          <button type="submit">Log in</button>
+        </form>
+        <details class="create-account">
+          <summary>New here? Create an account</summary>
+          <form action="#" method="post">
+            <label for="new-user-name">Name</label>
+            <input id="new-user-name" name="new-user-name" type="text" autocomplete="name" required />
+            <label for="new-user-email">Email</label>
+            <input id="new-user-email" name="new-user-email" type="email" autocomplete="email" required />
+            <label for="new-user-password">Password</label>
+            <input id="new-user-password" name="new-user-password" type="password" autocomplete="new-password" minlength="8" required />
+            <button type="submit">Create account</button>
+          </form>
+        </details>
+      </div>
 
       <section>
         <h2>Monthly summary</h2>
