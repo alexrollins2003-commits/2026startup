@@ -26,6 +26,22 @@ body.dashboard-page .page-shell .summary-grid {
   margin-top: 1rem;
 }
 
+body.dashboard-page .page-shell .action-link {
+  display: inline-block;
+  margin: 0 0 1rem;
+  color: var(--sea-700);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--sun-400);
+  padding-bottom: 0.15rem;
+}
+
+body.dashboard-page .page-shell .action-link:hover,
+body.dashboard-page .page-shell .action-link:focus {
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+
 body.dashboard-page .page-shell .summary-item {
   padding: 1rem;
   border-radius: 14px;
