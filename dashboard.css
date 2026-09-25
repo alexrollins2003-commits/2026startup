@@ -11,8 +11,40 @@ body.dashboard-page .page-shell section:first-of-type {
   background: linear-gradient(180deg, #f9fdff, #f0f9ff);
 }
 
-body.dashboard-page .page-shell .auth-trigger {
-  justify-self: start;
+body.dashboard-page .site-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+}
+
+body.dashboard-page .site-nav ul {
+  grid-column: 2;
+}
+
+body.dashboard-page .site-nav .auth-trigger {
+  grid-column: 3;
+  justify-self: end;
+  min-width: 0;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  body.dashboard-page .site-nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0.6rem;
+  }
+
+  body.dashboard-page .site-nav ul {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  body.dashboard-page .site-nav .auth-trigger {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }
 
 body.dashboard-page .auth-window {
@@ -52,8 +84,6 @@ body.dashboard-page .auth-window-heading h2 {
 body.dashboard-page .auth-window .auth-close {
   min-width: 0;
   padding: 0.45rem 0.7rem;
-  background: var(--slate-100);
-  color: var(--sea-700);
 }
 
 body.dashboard-page .auth-window form {
