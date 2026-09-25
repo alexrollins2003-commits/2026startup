@@ -11,6 +11,11 @@ body.budget-page .page-shell .budget-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
+  align-items: start;
+}
+
+body.budget-page .page-shell .budget-layout > section {
+  margin-bottom: 0;
 }
 
 body.budget-page .page-shell form {

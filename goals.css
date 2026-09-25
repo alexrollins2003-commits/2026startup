@@ -8,18 +8,32 @@ body.goals-page .page-shell .goal-total {
   font-weight: 800;
   color: var(--mint-500);
   margin: 0.5rem 0;
+  line-height: 1.1;
 }
 
 body.goals-page .page-shell .goal-list {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.9rem;
 }
 
 body.goals-page .page-shell .goal-item {
-  padding: 0.9rem 1rem;
+  padding: 1rem 1.05rem;
   border: 1px solid var(--slate-200);
-  border-radius: 12px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #f9fffb, #f2faf6);
+  box-shadow: 0 8px 18px rgba(59, 167, 122, 0.05);
+}
+
+body.goals-page .page-shell .goal-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--sea-700);
+  font-size: 1.05rem;
+}
+
+body.goals-page .page-shell .goal-item p {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
 }
 
 body.goals-page .page-shell .progress-bar {
@@ -28,18 +42,18 @@ body.goals-page .page-shell .progress-bar {
   border-radius: 999px;
   background: var(--slate-200);
   overflow: hidden;
-  margin-top: 0.5rem;
 }
 
 body.goals-page .page-shell .progress-bar > span {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--mint-500), var(--sea-500));
+  background: linear-gradient(90deg, var(--mint-500), var(--sea-600));
 }
 
 body.goals-page .page-shell figure {
   max-width: 700px;
+  margin: 0.75rem 0 0;
 }
 
 @media (max-width: 700px) {
