@@ -5,6 +5,7 @@ body.about-page .page-shell {
 
 body.about-page .page-shell section {
   background: linear-gradient(180deg, #ffffff, #f8fbff);
+  padding-top: 1.2rem;
 }
 
 body.about-page .page-shell .feature-list {
@@ -33,6 +34,10 @@ body.about-page .page-shell .feature-list li::before {
 
 body.about-page .page-shell #api-tip-display {
   margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--sun-400);
+  background: #fffaf0;
+  border-radius: 10px;
 }
 
 @media (max-width: 700px) {
