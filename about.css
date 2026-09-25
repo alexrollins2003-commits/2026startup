@@ -22,12 +22,17 @@ body.about-page .page-shell .feature-list li {
   border: 1px solid var(--slate-200);
   background: linear-gradient(180deg, #f7fbff, #eef7ff);
   color: var(--ink-700);
+  box-shadow: 0 6px 16px rgba(29, 91, 138, 0.04);
 }
 
 body.about-page .page-shell .feature-list li::before {
   content: "✦ ";
   color: var(--sun-500);
   font-weight: 700;
+}
+
+body.about-page .page-shell #api-tip-display {
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 700px) {
