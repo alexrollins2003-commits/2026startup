@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  --sky-100: #edf7ff;
+  --sky-200: #dfeeff;
+  --sea-600: #1d5b8a;
+  --sea-700: #153d5b;
+  --sun-400: #f4b35f;
+  --sun-300: #ffe9b5;
+  --mint-500: #3ba77a;
+  --slate-100: #f3f6f8;
+  --slate-200: #dfe7ee;
+  --text: #1e2f3d;
+  --muted: #5c6f82;
+  --white: #ffffff;
+  --shadow: 0 12px 30px rgba(17, 52, 78, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(180deg, #edf8ff 0%, #f5f9fc 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--sea-600);
+  text-decoration: none;
+}
+
+a:hover,
+ a:focus {
+  text-decoration: underline;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--slate-200);
+  box-shadow: 0 8px 18px rgba(21, 61, 91, 0.04);
+}
+
+header h1 {
+  margin: 0;
+  padding: 1.5rem 1.5rem 0.5rem;
+  color: var(--sea-700);
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+}
+
+header img {
+  width: min(100%, 420px);
+  margin: 0 auto 1rem;
+  border-radius: 18px;
+}
+
+nav {
+  padding: 0 1.5rem 1.25rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--slate-200);
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--white), var(--sky-100));
+  color: var(--sea-700);
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(29, 91, 138, 0.12);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+main h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  color: var(--sea-700);
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(1.7rem, 2vw, 2.3rem);
+}
+
+main p,
+main li,
+main label,
+main td,
+main th {
+  color: var(--text);
+}
+
+section {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+section h2 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: clamp(1.3rem, 1.5vw, 1.8rem);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 520px;
+}
+
+label {
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  font: inherit;
+  background: #fff;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--sea-600);
+  box-shadow: 0 0 0 4px rgba(29, 91, 138, 0.1);
+}
+
+button {
+  width: fit-content;
+  min-width: 140px;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.15rem;
+  background: linear-gradient(135deg, var(--sea-600), var(--sun-400));
+  color: var(--white);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  opacity: 0.98;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  padding: 0.8rem 0.9rem;
+  border-bottom: 1px solid var(--slate-200);
+  text-align: left;
+}
+
+th {
+  background: #f8fbff;
+  color: var(--sea-700);
+}
+
+code {
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  padding: 0.1rem 0.35rem;
+  font-family: Consolas, monospace;
+}
+
+footer {
+  background: linear-gradient(135deg, var(--sea-700), var(--sea-600));
+  color: #eaf5ff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
+
+@media (max-width: 700px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  main {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+}

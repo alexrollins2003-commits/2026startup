@@ -1,0 +1,39 @@
+body.budget-page .page-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+body.budget-page .page-shell section {
+  background: linear-gradient(180deg, #ffffff, #f9fcff);
+}
+
+body.budget-page .page-shell .budget-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+body.budget-page .page-shell form {
+  max-width: 100%;
+}
+
+body.budget-page .page-shell .suggestion-box {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f5fbff, #eefaf5);
+  border: 1px solid var(--slate-200);
+}
+
+body.budget-page .page-shell .suggestion-box p {
+  margin-bottom: 0.4rem;
+}
+
+body.budget-page .page-shell .suggestion-box strong {
+  color: var(--sea-700);
+}
+
+@media (max-width: 700px) {
+  body.budget-page .page-shell .budget-layout {
+    grid-template-columns: 1fr;
+  }
+}

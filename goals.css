@@ -1,0 +1,49 @@
+body.goals-page .page-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+body.goals-page .page-shell .goal-total {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--mint-500);
+  margin: 0.5rem 0;
+}
+
+body.goals-page .page-shell .goal-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+body.goals-page .page-shell .goal-item {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f9fffb, #f2faf6);
+}
+
+body.goals-page .page-shell .progress-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--slate-200);
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+body.goals-page .page-shell .progress-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--mint-500), var(--sea-500));
+}
+
+body.goals-page .page-shell figure {
+  max-width: 700px;
+}
+
+@media (max-width: 700px) {
+  body.goals-page .page-shell .goal-list {
+    grid-template-columns: 1fr;
+  }
+}
