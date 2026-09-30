@@ -113,13 +113,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits) - The project includes the required deployment and version-control work, and I completed the CSS revision work for the final deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - I created a clean visual design with a cohesive palette, consistent spacing, card-style sections, and responsive sizing so the layout stays contained without overflow.
+- [x] **Use of a CSS framework** - I used Bootstrap through a CDN in the application pages, which provides a responsive foundation and consistent styling for layout and UI components.
+- [x] **All visual elements styled using CSS** - I styled the page structure, navigation, forms, buttons, cards, tables, and other visual elements using custom CSS in the project files so the site is fully themed and consistent.
+- [x] **Responsive to window resizing using flexbox and/or grid display** - I used flexbox and grid-based layout rules, along with media queries, so the pages adapt to smaller screens and maintain readable layouts when the window is resized.
+- [x] **Use of an imported font** - I imported Google Fonts in the CSS and applied them to headings and body text for a more polished design.
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used element selectors, class selectors, an ID selector, pseudo-classes like `:hover` and `:focus`, and a pseudo-element like `::before` throughout the CSS.
 
 ## 🚀 React part 1: Routing deliverable
 
