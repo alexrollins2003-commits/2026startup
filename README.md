@@ -119,7 +119,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **All visual elements styled using CSS** - I styled the page structure, navigation, forms, buttons, cards, tables, and other visual elements using custom CSS in the project files so the site is fully themed and consistent.
 - [x] **Responsive to window resizing using flexbox and/or grid display** - I used flexbox and grid-based layout rules, along with media queries, so the pages adapt to smaller screens and maintain readable layouts when the window is resized.
 - [x] **Use of an imported font** - I imported Google Fonts in the CSS and applied them to headings and body text for a more polished design.
-- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used element selectors, class selectors, an ID selector, pseudo-classes like `:hover` and `:focus`, and a pseudo-element like `::before` throughout the CSS.
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used element selectors, class selectors, an ID selector, pseudo-classes and a pseudo-element throughout the CSS.
 
 ## 🚀 React part 1: Routing deliverable
 
