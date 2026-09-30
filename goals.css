@@ -6,7 +6,7 @@ body.goals-page .page-shell {
 body.goals-page .page-shell .goal-total {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
-  color: var(--mint-500);
+  color: var(--sea-700);
   margin: 0.5rem 0;
   line-height: 1.1;
 }
@@ -20,8 +20,8 @@ body.goals-page .page-shell .goal-item {
   padding: 1rem 1.05rem;
   border: 1px solid var(--slate-200);
   border-radius: 14px;
-  background: linear-gradient(180deg, #f9fffb, #f2faf6);
-  box-shadow: 0 8px 18px rgba(59, 167, 122, 0.05);
+  background: linear-gradient(180deg, #f9fcff, #eef7ff);
+  box-shadow: 0 8px 18px rgba(29, 91, 138, 0.06);
 }
 
 body.goals-page .page-shell .goal-item strong {
@@ -48,7 +48,7 @@ body.goals-page .page-shell .progress-bar > span {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--mint-500), var(--sea-600));
+  background: linear-gradient(90deg, var(--sun-400), var(--sea-600));
 }
 
 body.goals-page .page-shell figure {
