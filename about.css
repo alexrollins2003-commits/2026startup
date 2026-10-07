@@ -1,10 +1,5 @@
-body.about-page .page-shell {
-  display: grid;
-  gap: 1rem;
-}
-
 body.about-page .page-shell section {
-  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  background: var(--gradient-about-section);
   padding-top: 1.2rem;
 }
 
@@ -21,7 +16,7 @@ body.about-page .page-shell .feature-list li {
   padding: 0.9rem 1rem;
   border-radius: 12px;
   border: 1px solid var(--slate-200);
-  background: linear-gradient(180deg, #f7fbff, #eef7ff);
+  background: var(--gradient-soft-blue-panel);
   color: var(--ink-700);
   box-shadow: 0 6px 16px rgba(29, 91, 138, 0.04);
 }
@@ -36,12 +31,6 @@ body.about-page .page-shell #api-tip-display {
   margin-top: 0.5rem;
   padding: 0.9rem 1rem;
   border-left: 4px solid var(--sun-400);
-  background: #fffaf0;
+  background: var(--surface-tip);
   border-radius: 10px;
-}
-
-@media (max-width: 700px) {
-  body.about-page .page-shell .feature-list {
-    grid-template-columns: 1fr;
-  }
 }

@@ -1,8 +1,3 @@
-body.goals-page .page-shell {
-  display: grid;
-  gap: 1rem;
-}
-
 body.goals-page .page-shell .goal-total {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
@@ -20,7 +15,7 @@ body.goals-page .page-shell .goal-item {
   padding: 1rem 1.05rem;
   border: 1px solid var(--slate-200);
   border-radius: 14px;
-  background: linear-gradient(180deg, #f9fcff, #eef7ff);
+  background: var(--gradient-goal-item);
   box-shadow: 0 8px 18px rgba(29, 91, 138, 0.06);
 }
 
@@ -54,10 +49,4 @@ body.goals-page .page-shell .progress-bar > span {
 body.goals-page .page-shell figure {
   max-width: 700px;
   margin: 0.75rem 0 0;
-}
-
-@media (max-width: 700px) {
-  body.goals-page .page-shell .goal-list {
-    grid-template-columns: 1fr;
-  }
 }

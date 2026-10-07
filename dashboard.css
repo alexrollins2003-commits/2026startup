@@ -1,14 +1,9 @@
-body.dashboard-page .page-shell {
-  display: grid;
-  gap: 1rem;
-}
-
-body.dashboard-page .page-shell > h2 {
+.dashboard-heading {
   margin-bottom: 0.25rem;
 }
 
-body.dashboard-page .page-shell section:first-of-type {
-  background: linear-gradient(180deg, #f9fdff, #f0f9ff);
+.dashboard-overview {
+  background: var(--gradient-dashboard-overview);
 }
 
 body.dashboard-page .site-nav {
@@ -28,23 +23,6 @@ body.dashboard-page .site-nav .auth-trigger {
   padding: 0.5rem 0.8rem;
   font-size: 0.9rem;
   white-space: nowrap;
-}
-
-@media (max-width: 700px) {
-  body.dashboard-page .site-nav {
-    grid-template-columns: minmax(0, 1fr) auto;
-    row-gap: 0.6rem;
-  }
-
-  body.dashboard-page .site-nav ul {
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-
-  body.dashboard-page .site-nav .auth-trigger {
-    grid-column: 2;
-    grid-row: 2;
-  }
 }
 
 body.dashboard-page .auth-window {
@@ -106,14 +84,14 @@ body.dashboard-page .auth-window .create-account[open] summary {
   margin-bottom: 0.9rem;
 }
 
-body.dashboard-page .page-shell .summary-grid {
+.dashboard-summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
 
-body.dashboard-page .page-shell .action-link {
+.dashboard-action-link {
   display: inline-block;
   margin: 0 0 1rem;
   color: var(--sea-700);
@@ -123,33 +101,27 @@ body.dashboard-page .page-shell .action-link {
   padding-bottom: 0.15rem;
 }
 
-body.dashboard-page .page-shell .action-link:hover,
-body.dashboard-page .page-shell .action-link:focus {
+.dashboard-action-link:hover,
+.dashboard-action-link:focus {
   text-decoration: none;
   filter: brightness(1.08);
 }
 
-body.dashboard-page .page-shell .summary-item {
+.dashboard-summary-item {
   padding: 1rem;
   border-radius: 14px;
-  background: linear-gradient(180deg, #f7fbff, #edf6fd);
+  background: var(--gradient-summary-item);
   border: 1px solid var(--slate-200);
 }
 
-body.dashboard-page .page-shell .summary-item strong {
+.dashboard-summary-item strong {
   display: block;
   color: var(--sea-700);
   font-size: 1.4rem;
   margin-top: 0.25rem;
 }
 
-body.dashboard-page .page-shell .summary-item span {
+.dashboard-summary-item span {
   color: var(--ink-500);
   font-size: 0.95rem;
-}
-
-@media (max-width: 700px) {
-  body.dashboard-page .page-shell {
-    gap: 0.9rem;
-  }
 }
