@@ -4,7 +4,7 @@ import './about.css';
 
 export function About() {
   return (
-    <main class="page-shell d-grid gap-3">
+    <main className="page-shell about-page d-grid gap-3">
       <h2>About</h2>
       <p>Learn how Spend Horizon helps you plan smarter and spend with purpose.</p>
 

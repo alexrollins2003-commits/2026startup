@@ -4,7 +4,7 @@ import './goals.css';
 
 export function Goals() {
   return (
-    <main className="page-shell d-grid gap-3">
+    <main className="page-shell goals-page d-grid gap-3">
       <h2>Make future plans feel closer.</h2>
       <p>Here are your goals.</p>
 

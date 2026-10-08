@@ -279,11 +279,11 @@ footer p {
     padding: 1rem;
   }
 
-  body.about-page .page-shell .feature-list {
+  .about-page.page-shell .feature-list {
     grid-template-columns: 1fr;
   }
 
-  body.budget-page .page-shell .budget-layout {
+  .budget-page.page-shell .budget-layout {
     grid-template-columns: 1fr;
   }
 
@@ -302,7 +302,7 @@ footer p {
     grid-row: 2;
   }
 
-  body.goals-page .page-shell .goal-list {
+  .goals-page.page-shell .goal-list {
     grid-template-columns: 1fr;
   }
 }

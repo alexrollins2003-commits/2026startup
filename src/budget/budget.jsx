@@ -4,7 +4,7 @@ import './budget.css';
 
 export function Budget() {
   return (
-    <main className="page-shell d-grid gap-3">
+    <main className="page-shell budget-page d-grid gap-3">
       <h2>Build a budget that breathes.</h2>
       <p>Here's your plan.</p>
 
