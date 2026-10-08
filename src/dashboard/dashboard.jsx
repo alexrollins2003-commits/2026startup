@@ -1,53 +1,54 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './dashboard.css';
 
 export function Dashboard() {
   return (
-<main class="page-shell d-grid gap-3">
-      <h2 class="dashboard-heading">Your money, in view.</h2>
+    <main className="page-shell d-grid gap-3">
+      <h2 className="dashboard-heading">Your money, in view.</h2>
       <p>Welcome back.</p>
-      <div class="auth-window" id="auth-window" popover>
-        <div class="auth-window-heading">
+      <div className="auth-window" id="auth-window" popover="auto">
+        <div className="auth-window-heading">
           <h2>Sign in</h2>
-          <button class="auth-close" type="button" popovertarget="auth-window" popovertargetaction="hide">Close</button>
+          <button className="auth-close" type="button" popoverTarget="auth-window" popoverTargetAction="hide">Close</button>
         </div>
-        <form class="login-card" action="#" method="post">
-          <label for="user-name">Name</label>
-          <input id="user-name" name="user-name" type="text" placeholder="Enter your name" autocomplete="name" required />
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
+        <form className="login-card" action="#" method="post">
+          <label htmlFor="user-name">Name</label>
+          <input id="user-name" name="user-name" type="text" placeholder="Enter your name" autoComplete="name" required />
+          <label htmlFor="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" autoComplete="current-password" required />
           <button type="submit">Log in</button>
         </form>
-        <details class="create-account">
+        <details className="create-account">
           <summary>New here? Create an account</summary>
           <form action="#" method="post">
-            <label for="new-user-name">Name</label>
-            <input id="new-user-name" name="new-user-name" type="text" autocomplete="name" required />
-            <label for="new-user-email">Email</label>
-            <input id="new-user-email" name="new-user-email" type="email" autocomplete="email" required />
-            <label for="new-user-password">Password</label>
-            <input id="new-user-password" name="new-user-password" type="password" autocomplete="new-password" minlength="8" required />
+            <label htmlFor="new-user-name">Name</label>
+            <input id="new-user-name" name="new-user-name" type="text" autoComplete="name" required />
+            <label htmlFor="new-user-email">Email</label>
+            <input id="new-user-email" name="new-user-email" type="email" autoComplete="email" required />
+            <label htmlFor="new-user-password">Password</label>
+            <input id="new-user-password" name="new-user-password" type="password" autoComplete="new-password" minLength="8" required />
             <button type="submit">Create account</button>
           </form>
         </details>
       </div>
 
-      <section class="dashboard-overview">
+      <section className="dashboard-overview">
         <h2>Monthly summary</h2>
-        <div class="dashboard-summary-grid">
-          <div class="dashboard-summary-item">
+        <div className="dashboard-summary-grid">
+          <div className="dashboard-summary-item">
             <span>Monthly income</span>
             <strong>$3,920</strong>
           </div>
-          <div class="dashboard-summary-item">
+          <div className="dashboard-summary-item">
             <span>Available this month</span>
             <strong>$1,240</strong>
           </div>
-          <div class="dashboard-summary-item">
+          <div className="dashboard-summary-item">
             <span>Spent so far</span>
             <strong>$1,860</strong>
           </div>
-          <div class="dashboard-summary-item">
+          <div className="dashboard-summary-item">
             <span>Savings progress</span>
             <strong>$4,280</strong>
           </div>
@@ -56,7 +57,7 @@ export function Dashboard() {
 
       <section>
         <h2>Spending by category</h2>
-        <a class="dashboard-action-link" href="budget.html">Add expense</a>
+        <NavLink className="dashboard-action-link" to="/budget">Add expense</NavLink>
         <table>
           <thead><tr><th scope="col">Category</th><th scope="col">This month</th></tr></thead>
           <tbody>

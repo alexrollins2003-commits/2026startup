@@ -1,5 +1,6 @@
 import React from 'react';
 import './app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Dashboard } from './dashboard/dashboard';
 import { Budget } from './budget/budget';
