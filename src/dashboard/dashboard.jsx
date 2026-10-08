@@ -7,31 +7,6 @@ export function Dashboard() {
     <main className="page-shell d-grid gap-3">
       <h2 className="dashboard-heading">Your money, in view.</h2>
       <p>Welcome back.</p>
-      <div className="auth-window" id="auth-window" popover="auto">
-        <div className="auth-window-heading">
-          <h2>Sign in</h2>
-          <button className="auth-close" type="button" popoverTarget="auth-window" popoverTargetAction="hide">Close</button>
-        </div>
-        <form className="login-card" action="#" method="post">
-          <label htmlFor="user-name">Name</label>
-          <input id="user-name" name="user-name" type="text" placeholder="Enter your name" autoComplete="name" required />
-          <label htmlFor="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Enter your password" autoComplete="current-password" required />
-          <button type="submit">Log in</button>
-        </form>
-        <details className="create-account">
-          <summary>New here? Create an account</summary>
-          <form action="#" method="post">
-            <label htmlFor="new-user-name">Name</label>
-            <input id="new-user-name" name="new-user-name" type="text" autoComplete="name" required />
-            <label htmlFor="new-user-email">Email</label>
-            <input id="new-user-email" name="new-user-email" type="email" autoComplete="email" required />
-            <label htmlFor="new-user-password">Password</label>
-            <input id="new-user-password" name="new-user-password" type="password" autoComplete="new-password" minLength="8" required />
-            <button type="submit">Create account</button>
-          </form>
-        </details>
-      </div>
 
       <section className="dashboard-overview">
         <h2>Monthly summary</h2>

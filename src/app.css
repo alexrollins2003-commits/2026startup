@@ -287,17 +287,17 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  body.dashboard-page .site-nav {
+  .site-nav {
     grid-template-columns: minmax(0, 1fr) auto;
     row-gap: 0.6rem;
   }
 
-  body.dashboard-page .site-nav ul {
+  .site-nav ul {
     grid-column: 1 / -1;
     grid-row: 1;
   }
 
-  body.dashboard-page .site-nav .auth-trigger {
+  .site-nav .auth-trigger {
     grid-column: 2;
     grid-row: 2;
   }
