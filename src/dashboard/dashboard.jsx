@@ -2,6 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './dashboard.css';
 
+const spendingByCategory = [
+  { category: 'Housing', amount: '$1,100' },
+  { category: 'Food', amount: '$420' },
+  { category: 'Transportation', amount: '$210' },
+  { category: 'Fun and extras', amount: '$130' },
+];
+
 export function Dashboard() {
   return (
     <main className="page-shell d-grid gap-3">
@@ -36,10 +43,9 @@ export function Dashboard() {
         <table>
           <thead><tr><th scope="col">Category</th><th scope="col">This month</th></tr></thead>
           <tbody>
-            <tr><td>Housing</td><td>$1,100</td></tr>
-            <tr><td>Food</td><td>$420</td></tr>
-            <tr><td>Transportation</td><td>$210</td></tr>
-            <tr><td>Fun and extras</td><td>$130</td></tr>
+            {spendingByCategory.map(({ category, amount }) => (
+              <tr key={category}><td>{category}</td><td>{amount}</td></tr>
+            ))}
           </tbody>
         </table>
       </section>

@@ -20,7 +20,7 @@ export function About() {
 
       <section>
         <h2>How it works</h2>
-        <ul class="feature-list">
+        <ul className="feature-list">
           <li>Track your income and monthly expenses in one place.</li>
           <li>Organize spending by category to see patterns and trends.</li>
           <li>Create savings goals and estimate how long they will take to reach.</li>
