@@ -125,10 +125,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits).
+- [x] **Bundled using Vite** - I configured the project with Vite and use its development server and production build commands.
+- [x] **Components** - I organized the app into React components for the Dashboard, Budget, Goals, and About pages, with shared application navigation and layout.
+- [x] **Router** - I used React Router with `BrowserRouter`, `Routes`, `Route`, and `NavLink` to navigate between the Dashboard, Budget, Goals, and About pages.
 
 ## 🚀 React part 2: Reactivity deliverable
 
