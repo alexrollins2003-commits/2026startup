@@ -4,37 +4,37 @@ import './goals.css';
 
 export function Goals() {
   return (
-    <main class="page-shell d-grid gap-3">
+    <main className="page-shell d-grid gap-3">
       <h2>Make future plans feel closer.</h2>
       <p>Here are your goals.</p>
 
       <section>
         <h2>Total saved</h2>
-        <p class="goal-total">$4,280</p>
+        <p className="goal-total">$4,280</p>
         <p>This total will update month by month as new savings are recorded.</p>
         {/* <!-- Database placeholder: the total will eventually be calculated from the user's savings records. --> */}
       </section>
 
-      <section>
+    <section>
         <h2>Active goals</h2>
-        <div class="goal-list">
-          <div class="goal-item">
+        <div className="goal-list">
+            <div className="goal-item">
             <strong>Weekend trip</strong>
             <p>$720 saved of $1,200</p>
-            <div class="progress-bar"><span style="width: 60%"></span></div>
-          </div>
-          <div class="goal-item">
+            <div className="progress-bar"><span style={{ width: '60%' }}></span></div>
+            </div>
+            <div className="goal-item">
             <strong>Emergency fund</strong>
             <p>$3,100 saved of $6,000</p>
-            <div class="progress-bar"><span style="width: 52%"></span></div>
-          </div>
-          <div class="goal-item">
+            <div className="progress-bar"><span style={{ width: '52%' }}></span></div>
+            </div>
+            <div className="goal-item">
             <strong>New laptop</strong>
             <p>$460 saved of $1,800</p>
-            <div class="progress-bar"><span style="width: 26%"></span></div>
-          </div>
+            <div className="progress-bar"><span style={{ width: '26%' }}></span></div>
+            </div>
         </div>
-      </section>
+    </section>
 
       <section>
         <h2>Record monthly savings</h2>
