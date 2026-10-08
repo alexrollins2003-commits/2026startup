@@ -3,7 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Dashboard } from './dashboard/dashboard';
-// import your other page components here
+import { Budget } from './budget/budget';
+import { Goals } from './goals/goals';
+import { About } from './about/about';
 
 export default function App() {
   return (
@@ -24,7 +26,9 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          {/* one Route per page */}
+          <Route path="/budget" element={<Budget />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
