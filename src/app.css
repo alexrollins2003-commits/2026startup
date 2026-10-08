@@ -196,7 +196,7 @@ button {
   width: fit-content;
   min-width: 140px;
   border: none;
-  border-radius: 12px;
+  border-radius: 999px;
   padding: 0.8rem 1.15rem;
   background: linear-gradient(135deg, var(--sea-600), var(--sun-400));
   color: var(--white);

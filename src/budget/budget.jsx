@@ -4,28 +4,28 @@ import './budget.css';
 
 export function Budget() {
   return (
-    <main class="page-shell d-grid gap-3">
+    <main className="page-shell d-grid gap-3">
       <h2>Build a budget that breathes.</h2>
       <p>Here's your plan.</p>
 
-      <div class="budget-layout">
+      <div className="budget-layout">
         <section>
           <h2>Income</h2>
-          <form action="#" method="post">
-            <label for="paycheck">Primary paycheck</label>
-            <input id="paycheck" name="paycheck" type="number" value="3600" />
-            <label for="other-income">Other income</label>
-            <input id="other-income" name="other-income" type="number" value="320" />
+          <form onSubmit={(event) => event.preventDefault()}>
+            <label htmlFor="paycheck">Primary paycheck</label>
+            <input id="paycheck" name="paycheck" type="number" defaultValue="3600" />
+            <label htmlFor="other-income">Other income</label>
+            <input id="other-income" name="other-income" type="number" defaultValue="320" />
             <button type="submit">Save income</button>
           </form>
         </section>
 
         <section>
           <h2>Expenses</h2>
-          <form action="#" method="post">
-            <label for="expense-name">Expense name</label>
+          <form onSubmit={(event) => event.preventDefault()}>
+            <label htmlFor="expense-name">Expense name</label>
             <input id="expense-name" name="expense-name" type="text" placeholder="Rent" />
-            <label for="expense-category">Expense category</label>
+            <label htmlFor="expense-category">Expense category</label>
             <input id="expense-category" name="expense-category" type="text" list="category-options" placeholder="Enter Category" />
             <datalist id="category-options">
               <option value="Housing"></option>
@@ -34,7 +34,7 @@ export function Budget() {
               <option value="Transportation"></option>
               <option value="Entertainment"></option>
             </datalist>
-            <label for="expense-amount">Expense amount</label>
+            <label htmlFor="expense-amount">Expense amount</label>
             <input id="expense-amount" name="expense-amount" type="number" min="0" step="0.01" placeholder="1100" />
             <button type="submit">Save expense</button>
           </form>
@@ -52,7 +52,7 @@ export function Budget() {
         </section>
       </div>
 
-      <section class="suggestion-box">
+      <section className="suggestion-box">
         <h2>Suggestions</h2>
         <p><strong>Tip:</strong> A future service call will review category totals and suggest a way to save.</p>
         <p>Example response: cutting flexible dining by $35 would move your goal forward by 5 days.</p>

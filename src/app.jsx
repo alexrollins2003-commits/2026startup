@@ -1,7 +1,7 @@
 import React from 'react';
-import './app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import './app.css';
+import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { Dashboard } from './dashboard/dashboard';
 import { Budget } from './budget/budget';
 import { Goals } from './goals/goals';
@@ -10,7 +10,17 @@ import { About } from './about/about';
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="body">
+      <AppLayout />
+    </BrowserRouter>
+  );
+}
+
+function AppLayout() {
+  const location = useLocation();
+  const isDashboard = location.pathname === '/';
+
+  return (
+    <div className={`body${isDashboard ? ' dashboard-route' : ''}`}>
     <header className="site-header">
       <h1>Spend Horizon</h1>
       <img src="/horizon.svg" alt="A sunset over a distant horizon" width="400" />
@@ -21,6 +31,11 @@ export default function App() {
           <li><NavLink to="/goals">Goals</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
         </ul>
+        {isDashboard && (
+          <button className="auth-trigger" type="button" popoverTarget="auth-window" popoverTargetAction="show">
+            Sign in
+          </button>
+        )}
       </nav>
     </header>
 
@@ -37,8 +52,7 @@ export default function App() {
         <p>Alex Rollins</p>
         <p>GitHub repository: <a href="https://github.com/alexrollins2003-commits/2026startup">GitHub Link</a></p>
       </footer>
-      </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
