@@ -1,4 +1,4 @@
-body.goals-page .page-shell .goal-total {
+.body .goals-page .goal-total {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   color: var(--sea-700);
@@ -6,39 +6,44 @@ body.goals-page .page-shell .goal-total {
   line-height: 1.1;
 }
 
-body.goals-page .page-shell .goal-list {
+.body .goals-page .goal-list {
   display: grid;
-  gap: 0.9rem;
+  gap: 0;
 }
 
-body.goals-page .page-shell .goal-item {
-  padding: 1rem 1.05rem;
-  border: 1px solid var(--slate-200);
-  border-radius: 14px;
-  background: var(--gradient-goal-item);
-  box-shadow: 0 8px 18px rgba(29, 91, 138, 0.06);
+.body .goals-page .goal-item {
+  padding: 1.2rem 0.25rem;
+  border: 0;
+  border-bottom: 1px solid #b7c9d9;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-body.goals-page .page-shell .goal-item-heading {
+.body .goals-page .goal-item:last-child {
+  border-bottom: 0;
+}
+
+.body .goals-page .goal-item-heading {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
 }
 
-body.goals-page .page-shell .goal-item h3 {
+.body .goals-page .goal-item h3 {
   display: block;
   margin-bottom: 0.25rem;
   color: var(--sea-700);
   font-size: 1.05rem;
 }
 
-body.goals-page .page-shell .goal-item p {
+.body .goals-page .goal-item p {
   margin: 0 0 0.6rem;
   color: var(--muted);
 }
 
-body.goals-page .page-shell .progress-bar {
+.body .goals-page .progress-bar {
   width: 100%;
   height: 12px;
   border-radius: 999px;
@@ -46,92 +51,116 @@ body.goals-page .page-shell .progress-bar {
   overflow: hidden;
 }
 
-body.goals-page .page-shell .progress-bar > span {
+.body .goals-page .progress-bar > span {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--sun-400), var(--sea-600));
+  background: var(--sea-600);
 }
 
-body.goals-page .page-shell .goal-progress-label {
+.body .goals-page .goal-progress-label {
   margin: 0.4rem 0 1rem;
   font-size: 0.85rem;
 }
 
-body.goals-page .page-shell .goal-actions,
-body.goals-page .page-shell .goal-editor-actions {
+.body .goals-page .goal-actions,
+.body .goals-page .goal-editor-actions {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.8rem;
 }
 
-body.goals-page .page-shell .goal-actions button,
-body.goals-page .page-shell .goal-editor-actions button,
-body.goals-page .page-shell .goal-contribution-form button {
+.body .goals-page .goal-actions button {
+  min-width: 0;
+  padding: 0.2rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--sea-700);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.body .goals-page .goal-actions button:hover,
+.body .goals-page .goal-actions button:focus-visible {
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  opacity: 1;
+  text-decoration: underline;
+  transform: none;
+}
+
+.body .goals-page .goal-actions .goal-delete {
+  color: #a43e2c;
+}
+
+.body .goals-page .goal-editor-actions button,
+.body .goals-page .goal-contribution-form button {
   min-width: 0;
   padding: 0.5rem 0.8rem;
   border-radius: 8px;
   font-size: 0.85rem;
 }
 
-body.goals-page .page-shell .goal-delete,
-body.goals-page .page-shell .goal-cancel {
+.body .goals-page .goal-editor-actions .goal-cancel {
   background: var(--slate-600);
 }
 
-body.goals-page .page-shell .goal-contribution-form {
+.body .goals-page .goal-contribution-form {
   display: grid;
   gap: 0.45rem;
   max-width: 420px;
 }
 
-body.goals-page .page-shell .goal-contribution-form > div {
+.body .goals-page .goal-contribution-form > div {
   display: flex;
   gap: 0.5rem;
 }
 
-body.goals-page .page-shell .goal-contribution-form input {
+.body .goals-page .goal-contribution-form input {
   min-width: 0;
 }
 
-body.goals-page .page-shell .goal-editor {
+.body .goals-page .goal-editor {
   max-width: 520px;
 }
 
-body.goals-page .page-shell .goal-status {
+.body .goals-page .goal-status {
   margin: 0;
   color: var(--sea-700);
   font-weight: 700;
 }
 
-body.goals-page .page-shell .savings-chart svg {
+.body .goals-page .savings-chart svg {
   display: block;
   width: 100%;
   height: auto;
 }
 
-body.goals-page .page-shell .chart-axis {
+.body .goals-page .chart-axis {
   stroke: var(--slate-400);
 }
 
-body.goals-page .page-shell .chart-line {
+.body .goals-page .chart-line {
   fill: none;
   stroke: var(--sea-600);
   stroke-width: 4;
 }
 
-body.goals-page .page-shell .chart-point {
+.body .goals-page .chart-point {
   fill: var(--sun-400);
   stroke: var(--sea-700);
   stroke-width: 2;
 }
 
-body.goals-page .page-shell .savings-chart text {
+.body .goals-page .savings-chart text {
   fill: var(--text);
   font-size: 12px;
 }
 
-body.goals-page .page-shell figure {
+.body .goals-page figure {
   max-width: 700px;
   margin: 0.75rem 0 0;
 }
