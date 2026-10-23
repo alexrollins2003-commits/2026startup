@@ -85,10 +85,7 @@ export default function App() {
               <li><NavLink to="/about">About</NavLink></li>
             </ul>
             {currentUser ? (
-              <div className="auth-user">
-                <span>Hi, {currentUser.displayName}</span>
-                <button className="auth-trigger" type="button" onClick={handleSignOut}>Sign out</button>
-              </div>
+              <button className="auth-trigger" type="button" onClick={handleSignOut}>Sign out</button>
             ) : (
               <button className="auth-trigger" type="button" popoverTarget="auth-window" popoverTargetAction="show">
                 Sign in
@@ -124,7 +121,7 @@ export default function App() {
         )}
 
         <Routes>
-          <Route path="/" element={currentUser ? <Dashboard currentUser={currentUser} /> : <LoginPrompt />} />
+          <Route path="/" element={currentUser ? <Dashboard displayName={currentUser.displayName} /> : <LoginPrompt />} />
           <Route path="/budget" element={currentUser ? <Budget userId={currentUser.email} /> : <Navigate to="/" replace />} />
           <Route path="/goals" element={currentUser ? <Goals userId={currentUser.email} /> : <Navigate to="/" replace />} />
           <Route path="/about" element={<About />} />

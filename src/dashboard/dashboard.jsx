@@ -9,11 +9,11 @@ const spendingByCategory = [
   { category: 'Fun and extras', amount: '$130' },
 ];
 
-export function Dashboard() {
+export function Dashboard({ displayName }) {
   return (
     <main className="page-shell d-grid gap-3">
       <h2 className="dashboard-heading">Your money, in view.</h2>
-      <p>Welcome back.</p>
+      <p>Welcome back, {displayName}.</p>
 
       <section className="dashboard-overview">
         <h2>Monthly summary</h2>

@@ -129,16 +129,6 @@ nav li {
   white-space: nowrap;
 }
 
-.body .site-nav .auth-user {
-  grid-column: 3;
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--sea-700);
-  font-size: 0.9rem;
-}
-
 .login-prompt {
   align-content: center;
   justify-items: center;
@@ -399,17 +389,17 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .site-nav {
+  .body .site-nav {
     grid-template-columns: minmax(0, 1fr) auto;
     row-gap: 0.6rem;
   }
 
-  .site-nav ul {
+  .body .site-nav ul {
     grid-column: 1 / -1;
     grid-row: 1;
   }
 
-  .site-nav .auth-trigger {
+  .body .site-nav .auth-trigger {
     grid-column: 2;
     grid-row: 2;
   }
