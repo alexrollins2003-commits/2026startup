@@ -28,6 +28,47 @@ body.budget-page .category-budget-fields > div {
   gap: 0.25rem;
 }
 
+.budget-page .expense-form select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+
+.budget-page .expense-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.budget-page .expense-form-actions .secondary-action,
+.budget-page .expense-actions .delete-action {
+  background: var(--slate-600);
+}
+
+.budget-page .expense-table-wrap {
+  overflow-x: auto;
+}
+
+.budget-page .expense-table-wrap table {
+  min-width: 620px;
+}
+
+.budget-page .expense-actions {
+  white-space: nowrap;
+}
+
+.budget-page .expense-actions button {
+  min-width: 0;
+  margin: 0.15rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
 body.budget-page .save-message {
   margin: 0;
   color: var(--sea-700);
