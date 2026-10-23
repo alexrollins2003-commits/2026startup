@@ -17,6 +17,7 @@ function getStorageKey(userName) {
 export function createDefaultUserData() {
   return {
     schemaVersion,
+    profileName: '',
     monthlyIncomeCents: {
       primaryPaycheck: 0,
       otherIncome: 0,
@@ -37,6 +38,7 @@ function normalizeUserData(data) {
     ...defaults,
     ...data,
     schemaVersion,
+    profileName: typeof data.profileName === 'string' ? data.profileName : '',
     monthlyIncomeCents: {
       ...defaults.monthlyIncomeCents,
       ...(data.monthlyIncomeCents || {}),

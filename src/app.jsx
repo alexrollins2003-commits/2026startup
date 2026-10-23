@@ -1,13 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom';
 import { Dashboard } from './dashboard/dashboard';
 import { Budget } from './budget/budget';
 import { Goals } from './goals/goals';
 import { About } from './about/about';
+import { readUserData, saveUserData } from './data/userData';
+
+const currentUserStorageKey = 'spend-horizon.current-user';
+
+function readCurrentUser() {
+  try {
+    const user = JSON.parse(localStorage.getItem(currentUserStorageKey) || 'null');
+    return user && typeof user.email === 'string' && typeof user.displayName === 'string'
+      ? user
+      : null;
+  } catch {
+    return null;
+  }
+}
 
 export default function App() {
+  const [currentUser, setCurrentUser] = useState(readCurrentUser);
+  const [authMessage, setAuthMessage] = useState('');
+
+  function beginSession(email, displayName) {
+    const user = { email, displayName };
+    localStorage.setItem(currentUserStorageKey, JSON.stringify(user));
+    setCurrentUser(user);
+    setAuthMessage('');
+    document.getElementById('auth-window')?.hidePopover();
+  }
+
+  function handleSignIn(event) {
+    event.preventDefault();
+    const email = new FormData(event.currentTarget).get('email').trim().toLowerCase();
+    const savedProfile = readUserData(email);
+
+    if (!savedProfile.profileName) {
+      setAuthMessage('No local account was found for that email. Create an account below.');
+      return;
+    }
+
+    beginSession(email, savedProfile.profileName);
+  }
+
+  function handleCreateAccount(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const displayName = formData.get('displayName').trim();
+    const email = formData.get('email').trim().toLowerCase();
+    const savedProfile = readUserData(email);
+
+    if (savedProfile.profileName) {
+      setAuthMessage('A local account already uses that email. Sign in instead.');
+      return;
+    }
+
+    saveUserData(email, { ...savedProfile, profileName: displayName });
+    beginSession(email, displayName);
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem(currentUserStorageKey);
+    setCurrentUser(null);
+  }
+
   return (
     <BrowserRouter>
       <div className="body">
@@ -16,47 +75,58 @@ export default function App() {
           <img src="/horizon.svg" alt="A sunset over a distant horizon" width="400" />
           <nav className="site-nav" aria-label="Primary navigation">
             <ul>
-              <li><NavLink to="/">Dashboard</NavLink></li>
-              <li><NavLink to="/budget">Budget</NavLink></li>
-              <li><NavLink to="/goals">Goals</NavLink></li>
+              {currentUser && (
+                <>
+                  <li><NavLink to="/">Dashboard</NavLink></li>
+                  <li><NavLink to="/budget">Budget</NavLink></li>
+                  <li><NavLink to="/goals">Goals</NavLink></li>
+                </>
+              )}
               <li><NavLink to="/about">About</NavLink></li>
             </ul>
-            <button className="auth-trigger" type="button" popoverTarget="auth-window" popoverTargetAction="show">
-              Sign in
-            </button>
+            {currentUser ? (
+              <div className="auth-user">
+                <span>Hi, {currentUser.displayName}</span>
+                <button className="auth-trigger" type="button" onClick={handleSignOut}>Sign out</button>
+              </div>
+            ) : (
+              <button className="auth-trigger" type="button" popoverTarget="auth-window" popoverTargetAction="show">
+                Sign in
+              </button>
+            )}
           </nav>
         </header>
 
-        <div className="auth-window" id="auth-window" popover="auto">
-          <div className="auth-window-heading">
-            <h2>Sign in</h2>
-            <button className="auth-close" type="button" popoverTarget="auth-window" popoverTargetAction="hide">Close</button>
-          </div>
-          <form className="login-card" action="#" method="post">
-            <label htmlFor="user-name">Name</label>
-            <input id="user-name" name="user-name" type="text" placeholder="Enter your name" autoComplete="name" required />
-            <label htmlFor="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Enter your password" autoComplete="current-password" required />
-            <button type="submit">Log in</button>
-          </form>
-          <details className="create-account">
-            <summary>New here? Create an account</summary>
-            <form action="#" method="post">
-              <label htmlFor="new-user-name">Name</label>
-              <input id="new-user-name" name="new-user-name" type="text" autoComplete="name" required />
-              <label htmlFor="new-user-email">Email</label>
-              <input id="new-user-email" name="new-user-email" type="email" autoComplete="email" required />
-              <label htmlFor="new-user-password">Password</label>
-              <input id="new-user-password" name="new-user-password" type="password" autoComplete="new-password" minLength="8" required />
-              <button type="submit">Create account</button>
+        {!currentUser && (
+          <div className="auth-window" id="auth-window" popover="auto">
+            <div className="auth-window-heading">
+              <h2>Sign in</h2>
+              <button className="auth-close" type="button" popoverTarget="auth-window" popoverTargetAction="hide">Close</button>
+            </div>
+            <p className="auth-note">Local demo account. No password is stored.</p>
+            <form className="login-card" onSubmit={handleSignIn}>
+              <label htmlFor="sign-in-email">Email</label>
+              <input id="sign-in-email" name="email" type="email" autoComplete="email" required />
+              <button type="submit">Sign in</button>
             </form>
-          </details>
-        </div>
+            {authMessage && <p className="auth-message" role="alert">{authMessage}</p>}
+            <details className="create-account">
+              <summary>New here? Create an account</summary>
+              <form onSubmit={handleCreateAccount}>
+                <label htmlFor="new-user-name">Name</label>
+                <input id="new-user-name" name="displayName" type="text" autoComplete="name" required />
+                <label htmlFor="new-user-email">Email</label>
+                <input id="new-user-email" name="email" type="email" autoComplete="email" required />
+                <button type="submit">Create account</button>
+              </form>
+            </details>
+          </div>
+        )}
 
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/budget" element={<Budget />} />
-          <Route path="/goals" element={<Goals />} />
+          <Route path="/" element={currentUser ? <Dashboard currentUser={currentUser} /> : <LoginPrompt />} />
+          <Route path="/budget" element={currentUser ? <Budget userId={currentUser.email} /> : <Navigate to="/" replace />} />
+          <Route path="/goals" element={currentUser ? <Goals userId={currentUser.email} /> : <Navigate to="/" replace />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -68,6 +138,18 @@ export default function App() {
         </footer>
       </div>
     </BrowserRouter>
+  );
+}
+
+function LoginPrompt() {
+  return (
+    <main className="login-prompt">
+      <h2>Welcome to Spend Horizon</h2>
+      <p>Sign in to manage your budget, expenses, and savings goals.</p>
+      <button className="auth-trigger" type="button" popoverTarget="auth-window" popoverTargetAction="show">
+        Sign in or create account
+      </button>
+    </main>
   );
 }
 
