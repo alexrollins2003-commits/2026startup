@@ -1,77 +1,228 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SavingsChart } from './SavingsChart';
 import './goals.css';
+import { readUserData, saveUserData } from '../data/userData';
 
+function amountToCents(amount) {
+  return Math.round(Number(amount || 0) * 100);
+}
 
-export function Goals() {
+function centsToAmount(cents) {
+  return (Number(cents || 0) / 100).toFixed(2);
+}
+
+function formatCurrency(cents) {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(cents || 0) / 100);
+}
+
+function createGoalId() {
+  return globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
+}
+
+function createGoalDraft() {
+  return { name: '', targetAmount: '', savedAmount: '0.00' };
+}
+
+function todayAsInputValue() {
+  const now = new Date();
+  return new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+}
+
+export function Goals({ userId }) {
+  const [userData, setUserData] = useState(() => readUserData(userId));
+  const [goalDraft, setGoalDraft] = useState(createGoalDraft);
+  const [editingGoalId, setEditingGoalId] = useState(null);
+  const [statusMessage, setStatusMessage] = useState('');
+  const totalSavedCents = userData.goals.reduce((total, goal) => total + Number(goal.savedCents || 0), 0);
+
+  function saveGoal(event) {
+    event.preventDefault();
+    const existingGoal = userData.goals.find((goal) => goal.id === editingGoalId);
+    const goal = {
+      id: editingGoalId ?? createGoalId(),
+      name: goalDraft.name.trim(),
+      targetCents: amountToCents(goalDraft.targetAmount),
+      savedCents: amountToCents(goalDraft.savedAmount),
+      contributions: existingGoal?.contributions ?? [],
+    };
+    const goals = editingGoalId
+      ? userData.goals.map((item) => item.id === editingGoalId ? goal : item)
+      : [...userData.goals, goal];
+
+    setUserData(saveUserData(userId, { ...userData, goals }));
+    setGoalDraft(createGoalDraft());
+    setEditingGoalId(null);
+    setStatusMessage(editingGoalId ? 'Goal updated.' : 'Goal created.');
+  }
+
+  function beginGoalEdit(goal) {
+    setEditingGoalId(goal.id);
+    setGoalDraft({
+      name: goal.name,
+      targetAmount: centsToAmount(goal.targetCents),
+      savedAmount: centsToAmount(goal.savedCents),
+    });
+    setStatusMessage('');
+  }
+
+  function cancelGoalEdit() {
+    setEditingGoalId(null);
+    setGoalDraft(createGoalDraft());
+    setStatusMessage('Edit canceled.');
+  }
+
+  function addContribution(event, goal) {
+    event.preventDefault();
+    const amount = new FormData(event.currentTarget).get('contribution');
+    const amountCents = amountToCents(amount);
+    if (!Number.isSafeInteger(amountCents) || amountCents <= 0) return;
+
+    const contribution = {
+      id: createGoalId(),
+      amountCents,
+      date: todayAsInputValue(),
+    };
+    const goals = userData.goals.map((item) => item.id === goal.id
+      ? {
+        ...item,
+        savedCents: Number(item.savedCents || 0) + amountCents,
+        contributions: [...(Array.isArray(item.contributions) ? item.contributions : []), contribution],
+      }
+      : item);
+
+    setUserData(saveUserData(userId, { ...userData, goals }));
+    event.currentTarget.reset();
+    setStatusMessage(`${goal.name} contribution saved.`);
+  }
+
+  function deleteGoal(goal) {
+    if (!window.confirm(`Delete the ${goal.name} goal?`)) return;
+
+    const goals = userData.goals.filter((item) => item.id !== goal.id);
+    setUserData(saveUserData(userId, { ...userData, goals }));
+    if (editingGoalId === goal.id) {
+      setEditingGoalId(null);
+      setGoalDraft(createGoalDraft());
+    }
+    setStatusMessage('Goal deleted.');
+  }
+
   return (
     <main className="page-shell goals-page d-grid gap-3">
       <h2>Make future plans feel closer.</h2>
-      <p>Here are your goals.</p>
+      <p>Track what you are saving for.</p>
 
       <section>
         <h2>Total saved</h2>
-        <p className="goal-total">$4,280</p>
-        <p>This total will update month by month as new savings are recorded.</p>
-        {/* <!-- Database placeholder: the total will eventually be calculated from the user's savings records. --> */}
+        <p className="goal-total">{formatCurrency(totalSavedCents)}</p>
+        <p>Across {userData.goals.length} {userData.goals.length === 1 ? 'goal' : 'goals'}.</p>
       </section>
 
-    <section>
+      <section>
         <h2>Active goals</h2>
         <div className="goal-list">
-            <div className="goal-item">
-            <strong>Weekend trip</strong>
-            <p>$720 saved of $1,200</p>
-            <div className="progress-bar"><span style={{ width: '60%' }}></span></div>
-            </div>
-            <div className="goal-item">
-            <strong>Emergency fund</strong>
-            <p>$3,100 saved of $6,000</p>
-            <div className="progress-bar"><span style={{ width: '52%' }}></span></div>
-            </div>
-            <div className="goal-item">
-            <strong>New laptop</strong>
-            <p>$460 saved of $1,800</p>
-            <div className="progress-bar"><span style={{ width: '26%' }}></span></div>
-            </div>
-        </div>
-    </section>
+          {userData.goals.length ? userData.goals.map((goal) => {
+            const targetCents = Number(goal.targetCents || 0);
+            const savedCents = Number(goal.savedCents || 0);
+            const progress = targetCents > 0 ? Math.min(100, (savedCents / targetCents) * 100) : 0;
 
-      <section>
-        <h2>Record monthly savings</h2>
-        <form action="#" method="post">
-          <label htmlFor="monthly-savings">Amount saved this month</label>
-          <input id="monthly-savings" name="monthly-savings" type="number" placeholder="160" />
-          <button type="submit">Save contribution</button>
-        </form>
+            return (
+              <article className="goal-item" key={goal.id}>
+                <div className="goal-item-heading">
+                  <div>
+                    <h3>{goal.name}</h3>
+                    <p>{formatCurrency(savedCents)} saved of {formatCurrency(targetCents)}</p>
+                  </div>
+                  <div className="goal-actions">
+                    <button type="button" onClick={() => beginGoalEdit(goal)}>Edit</button>
+                    <button type="button" className="goal-delete" onClick={() => deleteGoal(goal)}>Delete</button>
+                  </div>
+                </div>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  aria-label={`${goal.name} savings progress`}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow={Math.round(progress)}
+                >
+                  <span style={{ width: `${progress}%` }} />
+                </div>
+                <p className="goal-progress-label">{Math.round(progress)}% complete</p>
+                <form className="goal-contribution-form" onSubmit={(event) => addContribution(event, goal)}>
+                  <label htmlFor={`contribution-${goal.id}`}>Add contribution</label>
+                  <div>
+                    <input
+                      id={`contribution-${goal.id}`}
+                      name="contribution"
+                      type="number"
+                      min="0.01"
+                      step="0.01"
+                      placeholder="0.00"
+                      required
+                    />
+                    <button type="submit">Add</button>
+                  </div>
+                </form>
+              </article>
+            );
+          }) : <p>No savings goals yet.</p>}
+        </div>
       </section>
 
       <section>
-        <h2>New goal</h2>
-        <form action="#" method="post">
+        <h2>{editingGoalId ? 'Edit goal' : 'New goal'}</h2>
+        <form className="goal-editor" onSubmit={saveGoal}>
           <label htmlFor="goal-name">Goal name</label>
-          <input id="goal-name" name="goal-name" type="text" placeholder="Summer trip" />
-          <label htmlFor="goal-amount">Target amount</label>
-          <input id="goal-amount" name="goal-amount" type="number" placeholder="1200" />
-          <button type="submit">Save goal</button>
+          <input
+            id="goal-name"
+            name="goal-name"
+            type="text"
+            placeholder="Summer trip"
+            value={goalDraft.name}
+            onChange={(event) => setGoalDraft({ ...goalDraft, name: event.target.value })}
+            required
+          />
+          <label htmlFor="goal-target">Target amount</label>
+          <input
+            id="goal-target"
+            name="goal-target"
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={goalDraft.targetAmount}
+            onChange={(event) => setGoalDraft({ ...goalDraft, targetAmount: event.target.value })}
+            required
+          />
+          <label htmlFor="goal-saved">Saved so far</label>
+          <input
+            id="goal-saved"
+            name="goal-saved"
+            type="number"
+            min="0"
+            step="0.01"
+            value={goalDraft.savedAmount}
+            onChange={(event) => setGoalDraft({ ...goalDraft, savedAmount: event.target.value })}
+            required
+          />
+          <div className="goal-editor-actions">
+            <button type="submit">{editingGoalId ? 'Save changes' : 'Create goal'}</button>
+            {editingGoalId && <button type="button" className="goal-cancel" onClick={cancelGoalEdit}>Cancel</button>}
+          </div>
         </form>
       </section>
 
       <section>
         <h2>Monthly savings history</h2>
-        <SavingsChart />
-        {/* <!-- Database placeholder: monthly savings history will be loaded from saved records. --> */}
+        <SavingsChart goals={userData.goals} />
       </section>
+
+      {statusMessage && <p className="goal-status" role="status" aria-live="polite">{statusMessage}</p>}
 
       <section>
         <h2>Currency conversion</h2>
         <p>Third-party API placeholder: Frankfurter will provide current exchange rates.</p>
         <p>Example: 1,200 USD is approximately 1,080 EUR.</p>
-      </section>
-
-      <section>
-        {/* <!-- Database data placeholder: savings goals above represent records stored for the logged-in user. --> */}
-        <p>Database preview: three savings goal records are currently displayed.</p>
       </section>
     </main>
   );
