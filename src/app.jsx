@@ -121,7 +121,7 @@ export default function App() {
         )}
 
         <Routes>
-          <Route path="/" element={currentUser ? <Dashboard displayName={currentUser.displayName} /> : <LoginPrompt />} />
+          <Route path="/" element={currentUser ? <Dashboard displayName={currentUser.displayName} userId={currentUser.email} /> : <LoginPrompt />} />
           <Route path="/budget" element={currentUser ? <Budget userId={currentUser.email} /> : <Navigate to="/" replace />} />
           <Route path="/goals" element={currentUser ? <Goals userId={currentUser.email} /> : <Navigate to="/" replace />} />
           <Route path="/about" element={<About />} />

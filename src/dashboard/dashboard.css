@@ -47,3 +47,8 @@
   color: var(--ink-500);
   font-size: 0.95rem;
 }
+
+.over-budget {
+  color: #a43e2c;
+  font-weight: 750;
+}
