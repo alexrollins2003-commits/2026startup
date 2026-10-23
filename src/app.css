@@ -29,6 +29,17 @@
   box-sizing: border-box;
 }
 
+.body .site-header .hero-auth-trigger {
+  grid-area: hero;
+  z-index: 3;
+  justify-self: end;
+  align-self: start;
+  min-width: 112px;
+  margin: 1.25rem 1.5rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+}
+
 .body {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif;
@@ -38,12 +49,6 @@
 }
 
 img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: var(--sea-600);
   text-decoration: none;
 }
 
@@ -118,15 +123,25 @@ nav li {
 
 .body .site-nav ul {
   grid-column: 2;
+  align-items: center;
 }
 
 .body .site-nav .auth-trigger {
   grid-column: 3;
   justify-self: end;
-  min-width: 0;
-  padding: 0.5rem 0.8rem;
+  min-width: 104px;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--sea-600);
+  background: transparent;
+  color: var(--sea-700);
   font-size: 0.9rem;
-  white-space: nowrap;
+}
+
+.body .site-nav .auth-trigger:hover,
+.body .site-nav .auth-trigger:focus-visible {
+  background: var(--sky-100);
+  filter: none;
+  transform: none;
 }
 
 .login-prompt {
@@ -402,6 +417,7 @@ footer p {
   .body .site-nav .auth-trigger {
     grid-column: 2;
     grid-row: 2;
+    min-width: 104px;
   }
 
   .goals-page.page-shell .goal-list {
