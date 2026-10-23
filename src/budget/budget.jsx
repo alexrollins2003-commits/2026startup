@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './budget.css';
+import { budgetCategories, readUserData, saveUserData } from '../data/userData';
 
+function centsToAmount(cents) {
+  return (cents / 100).toFixed(2);
+}
 
-export function Budget() {
+function amountToCents(amount) {
+  return Math.round(Number(amount || 0) * 100);
+}
+
+export function Budget({ userId }) {
+  const [savedData, setSavedData] = useState(() => readUserData(userId));
+  const [income, setIncome] = useState(() => ({
+    primaryPaycheck: centsToAmount(savedData.monthlyIncomeCents.primaryPaycheck),
+    otherIncome: centsToAmount(savedData.monthlyIncomeCents.otherIncome),
+  }));
+  const [categoryBudgets, setCategoryBudgets] = useState(() => Object.fromEntries(
+    budgetCategories.map((category) => [
+      category,
+      centsToAmount(savedData.categoryBudgetsCents[category]),
+    ]),
+  ));
+  const [statusMessage, setStatusMessage] = useState('');
+
+  function saveIncome(event) {
+    event.preventDefault();
+    const nextData = {
+      ...savedData,
+      monthlyIncomeCents: {
+        primaryPaycheck: amountToCents(income.primaryPaycheck),
+        otherIncome: amountToCents(income.otherIncome),
+      },
+    };
+    setSavedData(saveUserData(userId, nextData));
+    setStatusMessage('Income saved.');
+  }
+
+  function saveCategoryBudgets(event) {
+    event.preventDefault();
+    const nextData = {
+      ...savedData,
+      categoryBudgetsCents: Object.fromEntries(
+        budgetCategories.map((category) => [category, amountToCents(categoryBudgets[category])]),
+      ),
+    };
+    setSavedData(saveUserData(userId, nextData));
+    setStatusMessage('Category limits saved.');
+  }
+
   return (
     <main className="page-shell budget-page d-grid gap-3">
       <h2>Build a budget that breathes.</h2>
@@ -11,12 +57,60 @@ export function Budget() {
       <div className="budget-layout">
         <section>
           <h2>Income</h2>
-          <form onSubmit={(event) => event.preventDefault()}>
+          <form onSubmit={saveIncome}>
             <label htmlFor="paycheck">Primary paycheck</label>
-            <input id="paycheck" name="paycheck" type="number" defaultValue="3600" />
+            <input
+              id="paycheck"
+              name="paycheck"
+              type="number"
+              min="0"
+              step="0.01"
+              value={income.primaryPaycheck}
+              onChange={(event) => setIncome({ ...income, primaryPaycheck: event.target.value })}
+              required
+            />
             <label htmlFor="other-income">Other income</label>
-            <input id="other-income" name="other-income" type="number" defaultValue="320" />
+            <input
+              id="other-income"
+              name="other-income"
+              type="number"
+              min="0"
+              step="0.01"
+              value={income.otherIncome}
+              onChange={(event) => setIncome({ ...income, otherIncome: event.target.value })}
+              required
+            />
             <button type="submit">Save income</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Category limits</h2>
+          <form onSubmit={saveCategoryBudgets}>
+            <div className="category-budget-fields">
+              {budgetCategories.map((category) => {
+                const fieldId = `budget-${category.toLowerCase()}`;
+                return (
+                  <div key={category}>
+                    <label htmlFor={fieldId}>{category}</label>
+                    <input
+                      id={fieldId}
+                      name={fieldId}
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={categoryBudgets[category]}
+                      onChange={(event) => setCategoryBudgets({
+                        ...categoryBudgets,
+                        [category]: event.target.value,
+                      })}
+                      required
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <button type="submit">Save category limits</button>
           </form>
         </section>
 
@@ -51,6 +145,8 @@ export function Budget() {
           <p>Database preview: four saved expense records are displayed above.</p>
         </section>
       </div>
+
+      {statusMessage && <p className="save-message" role="status" aria-live="polite">{statusMessage}</p>}
 
       <section className="suggestion-box">
         <h2>Suggestions</h2>
