@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './dashboard.css';
 import { budgetCategories, readUserData } from '../data/userData';
 
+const mockLiveUpdates = [
+  'Example User reached 60% of the weekend trip goal.',
+];
+
 function formatCurrency(cents) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
 }
@@ -91,7 +95,7 @@ export function Dashboard({ displayName, userId }) {
       <section>
         <h2>Live updates</h2>
         <ul>
-          <li>Example User reached 60% of the weekend trip goal.</li>
+          {mockLiveUpdates.map((update) => <li key={update}>{update}</li>)}
         </ul>
       </section>
     </main>

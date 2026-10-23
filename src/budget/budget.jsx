@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './budget.css';
 import { budgetCategories, readUserData, saveUserData } from '../data/userData';
+import { ExpenseForm } from './ExpenseForm';
 
 function centsToAmount(cents) {
   return (cents / 100).toFixed(2);
@@ -191,51 +192,14 @@ export function Budget({ userId }) {
 
         <section>
           <h2>Expenses</h2>
-          <form className="expense-form" onSubmit={saveExpense}>
-            <label htmlFor="expense-name">Description</label>
-            <input
-              id="expense-name"
-              name="expense-name"
-              type="text"
-              placeholder="Groceries"
-              value={expenseDraft.description}
-              onChange={(event) => setExpenseDraft({ ...expenseDraft, description: event.target.value })}
-              required
-            />
-            <label htmlFor="expense-category">Expense category</label>
-            <select
-              id="expense-category"
-              name="expense-category"
-              value={expenseDraft.category}
-              onChange={(event) => setExpenseDraft({ ...expenseDraft, category: event.target.value })}
-            >
-              {budgetCategories.map((category) => <option key={category} value={category}>{category}</option>)}
-            </select>
-            <label htmlFor="expense-amount">Amount</label>
-            <input
-              id="expense-amount"
-              name="expense-amount"
-              type="number"
-              min="0.01"
-              step="0.01"
-              value={expenseDraft.amount}
-              onChange={(event) => setExpenseDraft({ ...expenseDraft, amount: event.target.value })}
-              required
-            />
-            <label htmlFor="expense-date">Date</label>
-            <input
-              id="expense-date"
-              name="expense-date"
-              type="date"
-              value={expenseDraft.date}
-              onChange={(event) => setExpenseDraft({ ...expenseDraft, date: event.target.value })}
-              required
-            />
-            <div className="expense-form-actions">
-              <button type="submit">{editingExpenseId ? 'Update expense' : 'Save expense'}</button>
-              {editingExpenseId && <button type="button" className="secondary-action" onClick={cancelExpenseEdit}>Cancel</button>}
-            </div>
-          </form>
+          <ExpenseForm
+            categories={budgetCategories}
+            draft={expenseDraft}
+            editing={Boolean(editingExpenseId)}
+            onDraftChange={(field, value) => setExpenseDraft((draft) => ({ ...draft, [field]: value }))}
+            onSubmit={saveExpense}
+            onCancel={cancelExpenseEdit}
+          />
           <div className="expense-table-wrap">
             <table>
               <thead>

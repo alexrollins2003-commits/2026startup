@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom';
@@ -24,6 +24,7 @@ function readCurrentUser() {
 export default function App() {
   const [currentUser, setCurrentUser] = useState(readCurrentUser);
   const [authMessage, setAuthMessage] = useState('');
+  const authWindowRef = useRef(null);
 
   useEffect(() => {
     function syncSession(event) {
@@ -41,7 +42,7 @@ export default function App() {
     localStorage.setItem(currentUserStorageKey, JSON.stringify(user));
     setCurrentUser(user);
     setAuthMessage('');
-    document.getElementById('auth-window')?.hidePopover();
+    authWindowRef.current?.hidePopover();
   }
 
   function handleSignIn(event) {
@@ -106,7 +107,7 @@ export default function App() {
         </header>
 
         {!currentUser && (
-          <div className="auth-window" id="auth-window" popover="auto">
+          <div className="auth-window" id="auth-window" popover="auto" ref={authWindowRef}>
             <div className="auth-window-heading">
               <h2>Sign in</h2>
               <button className="auth-close" type="button" popoverTarget="auth-window" popoverTargetAction="hide">Close</button>

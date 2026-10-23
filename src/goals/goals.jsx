@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SavingsChart } from './SavingsChart';
+import { GoalItem } from './GoalItem';
 import './goals.css';
 import { readUserData, saveUserData } from '../data/userData';
 
@@ -37,12 +38,23 @@ export function Goals({ userId }) {
 
   function saveGoal(event) {
     event.preventDefault();
+    const targetCents = amountToCents(goalDraft.targetAmount);
+    const savedCents = amountToCents(goalDraft.savedAmount);
+    if (!Number.isSafeInteger(targetCents) || targetCents <= 0) {
+      setStatusMessage('Target amount must be at least $0.01.');
+      return;
+    }
+    if (!Number.isSafeInteger(savedCents) || savedCents < 0) {
+      setStatusMessage('Saved amount must be zero or more.');
+      return;
+    }
+
     const existingGoal = userData.goals.find((goal) => goal.id === editingGoalId);
     const goal = {
       id: editingGoalId ?? createGoalId(),
       name: goalDraft.name.trim(),
-      targetCents: amountToCents(goalDraft.targetAmount),
-      savedCents: amountToCents(goalDraft.savedAmount),
+      targetCents,
+      savedCents,
       contributions: existingGoal?.contributions ?? [],
     };
     const goals = editingGoalId
@@ -121,52 +133,15 @@ export function Goals({ userId }) {
       <section>
         <h2>Active goals</h2>
         <div className="goal-list">
-          {userData.goals.length ? userData.goals.map((goal) => {
-            const targetCents = Number(goal.targetCents || 0);
-            const savedCents = Number(goal.savedCents || 0);
-            const progress = targetCents > 0 ? Math.min(100, (savedCents / targetCents) * 100) : 0;
-
-            return (
-              <article className="goal-item" key={goal.id}>
-                <div className="goal-item-heading">
-                  <div>
-                    <h3>{goal.name}</h3>
-                    <p>{formatCurrency(savedCents)} saved of {formatCurrency(targetCents)}</p>
-                  </div>
-                  <div className="goal-actions">
-                    <button type="button" onClick={() => beginGoalEdit(goal)}>Edit</button>
-                    <button type="button" className="goal-delete" onClick={() => deleteGoal(goal)}>Delete</button>
-                  </div>
-                </div>
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  aria-label={`${goal.name} savings progress`}
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  aria-valuenow={Math.round(progress)}
-                >
-                  <span style={{ width: `${progress}%` }} />
-                </div>
-                <p className="goal-progress-label">{Math.round(progress)}% complete</p>
-                <form className="goal-contribution-form" onSubmit={(event) => addContribution(event, goal)}>
-                  <label htmlFor={`contribution-${goal.id}`}>Add contribution</label>
-                  <div>
-                    <input
-                      id={`contribution-${goal.id}`}
-                      name="contribution"
-                      type="number"
-                      min="0.01"
-                      step="0.01"
-                      placeholder="0.00"
-                      required
-                    />
-                    <button type="submit">Add</button>
-                  </div>
-                </form>
-              </article>
-            );
-          }) : <p>No savings goals yet.</p>}
+          {userData.goals.length ? userData.goals.map((goal) => (
+            <GoalItem
+              key={goal.id}
+              goal={goal}
+              onEdit={beginGoalEdit}
+              onDelete={deleteGoal}
+              onAddContribution={addContribution}
+            />
+          )) : <p>No savings goals yet.</p>}
         </div>
       </section>
 
