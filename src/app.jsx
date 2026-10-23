@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom';
@@ -24,6 +24,17 @@ function readCurrentUser() {
 export default function App() {
   const [currentUser, setCurrentUser] = useState(readCurrentUser);
   const [authMessage, setAuthMessage] = useState('');
+
+  useEffect(() => {
+    function syncSession(event) {
+      if (event.key === currentUserStorageKey || event.key === null) {
+        setCurrentUser(readCurrentUser());
+      }
+    }
+
+    window.addEventListener('storage', syncSession);
+    return () => window.removeEventListener('storage', syncSession);
+  }, []);
 
   function beginSession(email, displayName) {
     const user = { email, displayName };
